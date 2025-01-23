@@ -9,3 +9,5 @@
         "/": lambda: num1 / num2
         "-": operator.sub,
         "X": operator.mul}
+        "-": num1 - num2,
+        "X": num1 * num2,
