@@ -15,7 +15,9 @@ def calculadora(num1: float, num2: float, operador: str) -> float:
     elif operador == 'X':
         result = num1 * num2
     elif operador == '/':
-        result = num1 / num2
+        if num2 == 0:
+            return float("nan")
+        result: num1 / num2
     
     return result
 
@@ -26,7 +28,7 @@ def calculadora_v2(num1: float, num2: float, operador: str) -> float:
         "^": lambda: num1 ** num2,
         "-": lambda: num1 - num2,
         "X": lambda: num1 * num2,
-        "/": lambda: num1 / num2
+        "/": lambda: num1 / num2,
     }
     funcao = operacoes.get(operador)
     if funcao:
@@ -41,7 +43,9 @@ def calculadora_v3(num1: float, num2: float, operador: str) -> float:
         "%": operator.mod,
         "^": operator.pow,
         "-": operator.sub,
-        "X": operator.mul}
+        "X": operator.mul,
+        "/": operator.truediv,
+    }
 
     if operador in operadores:
         return operadores[operador](num1, num2)
@@ -59,6 +63,7 @@ def calculadora_v4(num1: float, num2: float, operador: str) -> float:
         "^": num1 ** num2,
         "-": num1 - num2,
         "X": num1 * num2,
+        "+": num1 + num2,
     }
 
     return operacoes.get(operador, float("nan"))
